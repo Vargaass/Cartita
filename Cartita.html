@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Quieres salir conmigo?</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #ffc0cb; /* Fondo rosa */
+        }
+        #sobre {
+            width: 150px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        #sobre:hover {
+            transform: scale(1.1);
+        }
+        #mensaje {
+            display: none;
+            margin-top: 20px;
+        }
+        .opcion {
+            font-size: 18px;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .si { background-color: #4CAF50; color: white; } /* Botón verde */
+        .no { background-color: #FF4C4C; color: white; } /* Botón rojo */
+        #gif {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>¡Tienes un mensaje!</h1>
+    <img id="sobre" src="https://static.vecteezy.com/system/resources/previews/018/764/710/non_2x/envelope-with-heart-png.png" alt="Sobre cerrado" onclick="abrirSobre()">
+
+    <div id="mensaje">
+        <h2>¿Te gustaría salir conmigo?</h2>
+        <button class="opcion si" onclick="mostrarGif('si')">Sí</button>
+        <button class="opcion no" onclick="mostrarGif('no')">No</button>
+    </div>
+
+    <div id="gif"></div>
+
+    <script>
+        function abrirSobre() {
+            document.getElementById("sobre").style.display = "none";
+            document.getElementById("mensaje").style.display = "block";
+        }
+
+        function mostrarGif(respuesta) {
+            let gifContainer = document.getElementById("gif");
+
+            if (respuesta === "si") {
+                gifContainer.innerHTML = `
+                    <img src="https://media.giphy.com/media/CzBhMlhTrNlAkYLuLS/giphy.gif" alt="Gatito feliz" width="200">
+                    <h2>¡Wooow! 😍</h2>
+                    <p>Excelente, ahora nos ponemos de acuerdo por mensaje 💖</p>
+                `;
+            } else {
+                gifContainer.innerHTML = `
+                    <img src="https://media.giphy.com/media/LNqBHb6KqE3jX6kV7E/giphy.gif" alt="Gatito triste" width="200">
+                    <h2>Ni modo, al menos se intentó 😢</h2>
+                `;
+            }
+
+            gifContainer.style.display = "block";
+        }
+    </script>
+
+</body>
+</html>
+
